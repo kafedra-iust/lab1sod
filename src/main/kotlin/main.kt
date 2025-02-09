@@ -28,3 +28,25 @@ fun binarySearch(array: IntArray, key:Int) : Int {
     // TODO Find the smallest index of an element whose value is "key" with Binary Search algorithm
     return -1 // or -1 if absent
 }
+
+fun findMax(array: IntArray): Int? {
+    // TODO Find max value in array
+    return null
+}
+
+fun findMaxBinary(array: IntArray) : Int? {
+    return if (array.isEmpty()) {
+        null
+    } else findMax(array, 0, array.size - 1)
+}
+
+fun findMax(array: IntArray, low: Int, high: Int): Int {
+    if (low == high) {
+        return array[low]
+    } else {
+        val mid = (low + high) / 2
+        val leftMax = findMax(array, low, mid)
+        val rightMax = findMax(array, mid + 1, high)
+        return maxOf(leftMax, rightMax)
+    }
+}
